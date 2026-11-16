@@ -1,0 +1,46 @@
+LOCUS       locus_096               1093 bp    DNA     linear   UNA 01-JAN-1980
+DEFINITION  uncharacterised locus locus_096.
+ACCESSION   locus_096
+VERSION     locus_096
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     source          1..1093
+                     /mol_type="genomic DNA"
+     CDS             2..1090
+                     /locus_tag="locus_096_orf001"
+                     /transl_table=11
+                     /product="reverse transcriptase"
+                     /translation="KFKTDTNEIVLMGYEGESFKIISYIPKDEIEEEMFEKYYKEDIPV
+                     AVLHCLIVGKKYTSKNLPMYKTFKKKSSNKVREIYAPEEDVKKALKHLLKPLNKAYDMR
+                     RKGTNQFAYTIGRSIKDNALIHKNHKYVIKCDIKEFFDNCNWNLVSKYLRFIIPGSIRY
+                     TESTDILKKMMINPKTNGLYLGSPVSGALTNAILKPACLYLKRIFEKEGKAFSVYADDI
+                     TVSSEKPITKNEVIGKIRYVFEELKLPFKLKKEKTKRLINNGRRITGIRINHEDKMTID
+                     RQKYRLLRSILHRIDNDKPITMEENKLLGKIAFYKFVDESGKIEKLLEKHADAFQCIKD
+                     KRVKLLMTTSNESILELEKIFN"
+                     /db_xref="Pfam:PF00078"
+                     /note="Pfam domains: RVT_1 (68-310, 2.5e-16)"
+                     /structure_id="pa82bcab4"
+ORIGIN
+        1 aaaatttaaa actgatacaa atgaaattgt tttaatggga tacgaaggtg aatcttttaa
+       61 gataatatct tatattccaa aagatgaaat tgaagaagaa atgtttgaaa aatactataa
+      121 agaagatata cctgtagctg tattacattg tctcattgtt ggtaaaaaat acacttcaaa
+      181 aaacttacca atgtataaaa cttttaagaa aaaatcttct aacaaagtta gagaaatcta
+      241 tgctccagaa gaagatgtta aaaaagcttt aaaacattta ttaaaaccac ttaataaagc
+      301 ctatgatatg agaagaaaag gaacaaatca atttgcttat acaattggta gatcaataaa
+      361 agataatgct ttaattcaca aaaatcataa atatgtgatt aaatgtgata ttaaagaatt
+      421 tttcgacaat tgtaattgga atttagtttc taaatattta agatttataa ttccaggaag
+      481 cataagatat acagagtcta ctgatattct taagaaaatg atgattaatc ctaagactaa
+      541 tggtctctat ttaggttcac ctgtttcagg tgcattaaca aatgcaattc ttaaaccagc
+      601 ttgtctttac ctaaaaagaa tctttgaaaa agaaggtaaa gcattttctg tatacgctga
+      661 tgatattact gttagcagtg aaaaaccaat tactaaaaat gaagtaattg gtaagataag
+      721 atatgtattt gaagaattaa agcttccttt taaattgaaa aaagaaaaaa ctaaaagact
+      781 aattaataat ggtcgtagaa ttacaggtat tagaattaat cacgaagata aaatgacaat
+      841 cgatagacaa aaatatcgtt tgttaagatc tattcttcat agaatagaca atgataaacc
+      901 aattacaatg gaagaaaata aacttttagg aaaaattgct ttttacaaat ttgttgatga
+      961 aagtggtaaa attgaaaagc ttttagaaaa acatgcagat gcttttcaat gtataaaaga
+     1021 caaaagagta aaactcttaa tgacaacttc aaatgaatct attttagaat tagaaaaaat
+     1081 atttaattaa cta
+//

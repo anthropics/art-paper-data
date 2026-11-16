@@ -1,0 +1,6 @@
+The folder prompts_and_skills/campaign_skills/scientific-visualization/ comes from K-Dense AI.
+It is under the MIT License in that folder's LICENSE.md, not under the CC BY 4.0 licence in this repository's LICENSE file.
+
+Third-party data
+
+The alignments, structure models and reports in this repository include sequence records and identifiers from public databases, including UniProt and UniRef, MGnify, NCBI (SRA and RefSeq), JGI IMG and BV-BRC, and models from AlphaFold DB. Structure models were predicted with AlphaFold2, ColabFold, Boltz-2 and ESMFold2-Fast. These third-party records remain subject to their sources' terms and are not relicensed by this repository's CC BY 4.0 LICENSE.

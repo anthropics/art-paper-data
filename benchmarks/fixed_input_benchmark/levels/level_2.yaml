@@ -1,0 +1,34 @@
+level: 2
+title: Two exemplar loci, whole, inline
+reported_in_the_paper: true
+information_added_at_this_level: Adds the two complete loci those RTs come from (ORF table with Pfam hits, every protein sequence, full DNA), inside the prompt. No tools.
+prompt:
+  file: levels/prompts/level_2.txt
+  characters: 54322
+  sha256: 7a8b7c8ac742f252910b8196fe10846e6a13e192fcec4a08a6f10e8dd29fd003
+  delivered_as: the first and only user message of the session; nothing is added to the agent's default system prompt
+inline_data: 'the same two loci, whole: per-locus ORF table (coordinates, strand, length, gap to previous ORF, Pfam hits), all protein sequences, full DNA sequence'
+staged_files: []
+working_directory: not applicable (no shell)
+tools_visible_to_the_model:
+- name: submit_findings
+  definition: tools/submit_findings.yaml
+command_line_programs_on_PATH: []
+python: not available
+reference_databases_mounted_read_only: []
+network:
+  container_egress: none
+  literature_and_web: none
+container_resources:
+  vcpu: 8
+  memory_gib: 64
+timeouts_seconds:
+  single_tool_call: 600
+  container_startup: 900
+  task_setup: 3600
+  grading: 1800
+scratchpad_reasoning: allowed
+limits_and_ending: agent/limits.yaml (identical for every level)
+agent: agent/settings.yaml (identical for every level)
+submission: code/submit_findings_server.py (identical for every level)
+grading: grading/judge.yaml + grading/rubric.md (identical for every level)

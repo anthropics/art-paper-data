@@ -1,0 +1,20 @@
+limits:
+  wall_clock_hours: 15
+  output_token_budget: 1000000
+  output_token_budget_counts: 'every output token of the attempt: all responses of the lead agent and of any sub-agents it spawns'
+  budget_enforcement: checked every 20 s against the agent's live output-token count; reaching it stops the agent
+  turn_limit: 1500
+  single_tool_call_seconds: 600
+  max_output_tokens_per_response: 128000
+forced_submission_turn:
+  when: the agent stops without an ACCEPTED submission (finished without submitting, wall clock, token budget, or turn limit). Never sent after a safety refusal.
+  how: one extra user message in the SAME session, which resumes with the full transcript so far
+  window_minutes: 45
+  messages:
+    ended_without_submitting: The task must end now. Call submit_findings now, exactly once, with the best submission you can assemble from the work already done; do not start new analyses. If it is rejected, fix only what the error lists and resubmit.
+    wall_clock: Time is up for this task. Call submit_findings now, exactly once, with the best submission you can assemble from the work already done; do not start new analyses. If it is rejected, fix only what the error lists and resubmit.
+    token_budget: The output-token budget for this task is used up. Call submit_findings now, exactly once, with the best submission you can assemble from the work already done; do not start new analyses. If it is rejected, fix only what the error lists and resubmit.
+    turn_limit: The turn limit for this task is reached. Call submit_findings now, exactly once, with the best submission you can assemble from the work already done; do not start new analyses. If it is rejected, fix only what the error lists and resubmit.
+hard_cap_per_attempt_hours: 17
+attempt_retry: An attempt is retried from scratch only for infrastructure failures that are detected while it runs (for example, the agent reports that the environment's MCP server failed to connect and no environment tool call ever succeeded). Attempts are never retried for their content.
+stated_to_the_model: The token budget, the 15 h limit and the 10-minute tool cap are stated in every prompt (see levels/prompts).

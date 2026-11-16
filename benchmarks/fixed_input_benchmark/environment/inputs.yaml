@@ -1,0 +1,28 @@
+bundle:
+  loci:
+    files: 96
+    format: GenBank, one locus per file, named locus_NNN.gb
+    total_bp: 1206047
+    length_bp:
+      min: 1093
+      median: 10168.5
+      max: 26554
+    coding_sequences_total: 1158
+    annotation_in_each_file:
+    - CDS features with /locus_tag, /transl_table=11, /product, /translation
+    - /structure_id linking the protein to its structure file
+    - '/note with Pfam domain hits as ''Pfam domains: NAME (start-end, E-value)'' where present'
+    - /db_xref where present
+    anonymisation: source organism, accession and date fields are blanked; loci are named only by number
+  structures:
+    files: 1131
+    format: mmCIF, one per unique protein sequence (identical sequences share one file), named p<8 hex>.cif
+    prediction: ESMFold2-Fast, single sequence, 1 diffusion sample, seed 0 (as stated in the README.txt staged with the structures, which the model can read)
+    confidence_summary.json: per-protein id, length, mean pLDDT (0-1), pTM, fold wall-time
+    README.txt: 'a short note staged with the structures: file naming, prediction settings, and that pLDDT below 0.5 is unreliable'
+    without_a_structure:
+    - two proteins of 2,492 and 2,551 aa (memory limit); their CDS entries say so in the structure_id qualifier
+    - six ORFs of 21 to 29 aa carry no structure_id
+  genetic_code_note: Every CDS is labelled /transl_table=11, but 24 ORFs in 15 loci contain in-frame TGA codons that the supplied protein translations read as tryptophan (three of them at the last codon). The supplied translations are what the model sees; re-translating the DNA with table 11 will not reproduce them.
+not_recorded_in_the_benchmark_configuration:
+- the pipeline that extracted and annotated the loci (window size, ORF caller settings, Pfam thresholds)

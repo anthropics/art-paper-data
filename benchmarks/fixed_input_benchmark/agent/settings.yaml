@@ -1,0 +1,32 @@
+agent: Claude Code, version 2.1.267, run headless (no human in the loop), one session per attempt
+used_for: every level, including levels 1 and 2, where the session holds only the prompt and the submit tool
+permission_mode: all tool calls pre-approved (no permission prompts)
+reasoning:
+  effort: max
+  thinking: adaptive (the agent's default for the model)
+  sampling_parameters: none overridden (no temperature or top-p set)
+max_output_tokens_per_response: 128000
+context_window: the model's default in Claude Code (1,000,000 tokens where the model supports it, otherwise 200,000)
+turn_limit: 1500
+environment_variables:
+  MCP_TOOL_TIMEOUT: '600000'
+  MCP_TIMEOUT: '600000'
+  BASH_MAX_TIMEOUT_MS: '600000'
+first_output_timeout_seconds: 1800
+environment_tools: served by one MCP server named 'tools'; the model sees them as mcp__tools__<name> (see tools/)
+agent_built_in_tools:
+  disabled:
+  - Bash
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - NotebookEdit
+  - WebFetch
+  - WebSearch
+  left_enabled: 'the agent''s delegation and orchestration tools as shipped in that version: sub-agents (default agent types), tool search, skills, scheduling and messaging'
+  consequence: All file, shell and web access goes through the environment tools, inside the task container or its offline indexes. Sub-agents inherit the same restriction.
+system_prompt: the agent's unmodified default; the task text arrives only as the first user message
+behaviours_that_affect_results:
+- Tool results larger than about 50 KB are saved by the agent to its own file system and the model is shown a 2 KB preview. That file is outside the task container, so the model's shell cannot read it. At level 5 this affects long fetched articles; use the 'page' argument of fetch/pubmed_fetch to read them.

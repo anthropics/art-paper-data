@@ -1,0 +1,21 @@
+tool: pubmed_fetch
+name_seen_by_the_model: mcp__tools__pubmed_fetch
+note: Full text from the same offline index. Available at level 5.
+description_verbatim: |-
+  Fetches the full text of a PubMed Central (PMC) Open Access article. Accepts PMC article URLs (ncbi.nlm.nih.gov/pmc/articles/PMC...). This tool has offline-only access to a static index of PMC Open Access articles — it does NOT have live internet access and cannot fetch pages outside the index. Only use this tool to fetch URLs returned by pubmed_search.
+  - This tool fetches the document identified by the source argument in the cached document index (no live web access). It is often included in search results between <source> or <url> tags.
+  - You'll get the fetched document in <fetch_result> tags.
+  - You'll also get a list of links from the document in <links> tags. You can use these links to fetch more related documents.
+  - Feel free to call the fetch tool multiple times if you need to fetch multiple documents.
+input_schema:
+  type: object
+  properties:
+    source:
+      type: string
+      description: A string that identifies the source of the document to fetch
+    page:
+      type: integer
+      minimum: 1
+      description: Use this to fetch additional pages of document from source
+  required:
+  - source

@@ -1,0 +1,38 @@
+tool: pubmed_search
+name_seen_by_the_model: mcp__tools__pubmed_search
+note: Offline index of PubMed Central Open Access full-text articles. Available at level 5.
+description_verbatim: |-
+  Search Engine Tool
+  * The search engine will search over an index of PubMed Central (PMC) Open Access full-text biomedical articles.
+  * Results are full-text articles (publisher-submitted JATS XML, not OCR). Each result is one article at its canonical PMC URL.
+  * Filtering: Use the optional filter parameters to narrow results by identifier or publication date:
+    - doi (string): Digital Object Identifier (e.g., "10.1038/s41586-020-2012-7") — bare DOI only, no URL prefix
+    - pmcid (string): PubMed Central ID (e.g., "PMC7095418")
+    - pmid (string): PubMed/MEDLINE ID (e.g., "32015508")
+    - pub_date_gte / pub_date_lte (string): Publication date range in ISO 8601 (e.g., "2024-01-01T00:00:00Z")
+  * Multiple filters are combined with AND logic automatically.
+  * Note: Common search operators such as "", AND, OR, NOT, site: are not supported and will be ignored.
+  * You'll get results back from the search engine in <search_results> tags.
+input_schema:
+  type: object
+  properties:
+    query:
+      type: string
+      description: Search query
+    doi:
+      type: string
+      description: Digital Object Identifier for exact-match lookup, e.g. '10.1038/s41586-020-2012-7'. Bare DOI only — do not include the 'https://doi.org/' prefix.
+    pmcid:
+      type: string
+      description: 'PubMed Central identifier for exact-match lookup. Format: ''PMC'' followed by digits, e.g. ''PMC7095418''.'
+    pmid:
+      type: string
+      description: PubMed (MEDLINE) identifier for exact-match lookup. Numeric string, e.g. '32015508'.
+    pub_date_gte:
+      type: string
+      description: Minimum publication date (ISO 8601, e.g. '2024-01-01T00:00:00Z'). Filters to articles published on or after this date.
+    pub_date_lte:
+      type: string
+      description: Maximum publication date (ISO 8601, e.g. '2024-12-31T00:00:00Z'). Filters to articles published on or before this date.
+  required:
+  - query

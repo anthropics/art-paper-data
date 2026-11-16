@@ -1,0 +1,13 @@
+isolation: one fresh container per attempt; nothing persists between attempts
+resources:
+  vcpu: 8
+  memory_gib: 64
+network: no egress from the container at any level. At level 5 only, pip reaches a package index through a proxy. Literature and web tools are executed outside the container.
+filesystem:
+  /workdir: model-writable working directory (the shell starts here)
+  /workdir/data: link to the level's staged data, read-only; present at levels 3 to 5
+  /opt/db/*: read-only reference databases, per level
+  grading_material: rubric, keyword-screen patterns and gold submission are readable only by root inside the image; the build fails if the model user can read them
+  submission: the last valid submission is written to a file the model cannot modify; only that file is copied into a fresh grading container
+model_user: unprivileged user 'model' (uid 1000), not in the root group
+separation_of_agent_and_container: The agent process (Claude Code) runs OUTSIDE the task container, with its own working directory. The model's shell and file tools act inside the container; the agent's built-in file-system and shell tools are disabled (agent/settings.yaml).

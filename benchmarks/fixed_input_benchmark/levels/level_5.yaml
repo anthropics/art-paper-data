@@ -1,0 +1,96 @@
+level: 5
+title: Level 4 + literature and web search + pip
+reported_in_the_paper: true
+information_added_at_this_level: Adds literature search, web search and cached-page retrieval, and installation of Python packages with pip. No other network access.
+prompt:
+  file: levels/prompts/level_5.txt
+  characters: 1522
+  sha256: 785f11e76546cd1e8c33e5e5c7a6d6e650d3624151fbc8cf9467b43c34452500
+  delivered_as: the first and only user message of the session; nothing is added to the agent's default system prompt
+inline_data: none
+staged_files:
+- path: /workdir/data/loci/
+  content: 96 GenBank files, locus_001.gb ...
+  access: read-only to the model
+- path: /workdir/data/structures/
+  content: 1,131 mmCIF files (one per unique protein sequence, named by the structure_id qualifier on each CDS), confidence_summary.json and README.txt
+  access: read-only to the model
+  rule: 'all structures or none: no subset is ever staged'
+working_directory: /workdir (writable by the model; empty apart from the data link)
+tools_visible_to_the_model:
+- name: bash
+  definition: tools/bash.yaml
+- name: str_replace_based_edit_tool
+  definition: tools/str_replace_based_edit_tool.yaml
+- name: pubmed_search
+  definition: tools/pubmed_search.yaml
+- name: pubmed_fetch
+  definition: tools/pubmed_fetch.yaml
+- name: web_search
+  definition: tools/web_search.yaml
+- name: fetch
+  definition: tools/fetch.yaml
+- name: submit_findings
+  definition: tools/submit_findings.yaml
+command_line_programs_on_PATH:
+- hmmscan
+- hmmsearch
+- phmmer
+- jackhmmer
+- blastp
+- blastn
+- blastx
+- tblastn
+- makeblastdb
+- mafft
+- fasttree (also as FastTree)
+- prodigal
+- RNAfold
+- RNAalifold
+- RNAz
+- RNAplot
+- needle
+- water
+- transeq
+- sixpack
+- pepstats
+- garnier
+- mmseqs
+- foldseek
+- USalign (also as TMalign)
+- pymol
+- pymol-headless (PyMOL under a virtual X display)
+python:
+  interpreter: Python 3.11
+  packages:
+    biopython: '1.88'
+    pyhmmer: 0.12.3
+    gemmi: 0.7.5
+    networkx: 3.6.1
+    freesasa: 2.2.1
+    numpy: 2.4.6
+    scipy: 1.17.1
+    pandas: 3.0.5
+    scikit-learn: 1.9.0
+    matplotlib: 3.11.1
+  package_installation: pip enabled through a package proxy
+reference_databases_mounted_read_only:
+- /opt/db/pfam
+- /opt/db/blastdb
+- /opt/db/foldref
+network:
+  container_egress: none
+  literature_and_web: only through the search/fetch tools listed above, which are served from offline/cached indexes outside the container
+container_resources:
+  vcpu: 8
+  memory_gib: 64
+timeouts_seconds:
+  single_tool_call: 600
+  container_startup: 900
+  task_setup: 3600
+  grading: 1800
+scratchpad_reasoning: allowed
+limits_and_ending: agent/limits.yaml (identical for every level)
+agent: agent/settings.yaml (identical for every level)
+submission: code/submit_findings_server.py (identical for every level)
+grading: grading/judge.yaml + grading/rubric.md (identical for every level)

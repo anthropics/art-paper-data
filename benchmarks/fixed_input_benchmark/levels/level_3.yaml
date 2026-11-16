@@ -1,0 +1,79 @@
+level: 3
+title: All loci as files + offline sequence tools
+reported_in_the_paper: true
+information_added_at_this_level: Adds all 96 loci as GenBank files and a shell with sequence-analysis programs, Pfam-A and a curated protein database. No network.
+prompt:
+  file: levels/prompts/level_3.txt
+  characters: 1051
+  sha256: 0615a3f4141b9f3679daac874d670bce001e55ffff370ad377017723f293e661
+  delivered_as: the first and only user message of the session; nothing is added to the agent's default system prompt
+inline_data: none
+staged_files:
+- path: /workdir/data/loci/
+  content: 96 GenBank files, locus_001.gb ...
+  access: read-only to the model
+working_directory: /workdir (writable by the model; empty apart from the data link)
+tools_visible_to_the_model:
+- name: bash
+  definition: tools/bash.yaml
+- name: str_replace_based_edit_tool
+  definition: tools/str_replace_based_edit_tool.yaml
+- name: submit_findings
+  definition: tools/submit_findings.yaml
+command_line_programs_on_PATH:
+- hmmscan
+- hmmsearch
+- phmmer
+- jackhmmer
+- blastp
+- blastn
+- blastx
+- tblastn
+- makeblastdb
+- mafft
+- fasttree (also as FastTree)
+- prodigal
+- RNAfold
+- RNAalifold
+- RNAz
+- RNAplot
+- needle
+- water
+- transeq
+- sixpack
+- pepstats
+- garnier
+- mmseqs
+python:
+  interpreter: Python 3.11
+  packages:
+    biopython: '1.88'
+    pyhmmer: 0.12.3
+    gemmi: 0.7.5
+    networkx: 3.6.1
+    freesasa: 2.2.1
+    numpy: 2.4.6
+    scipy: 1.17.1
+    pandas: 3.0.5
+    scikit-learn: 1.9.0
+    matplotlib: 3.11.1
+  package_installation: disabled
+reference_databases_mounted_read_only:
+- /opt/db/pfam
+- /opt/db/blastdb
+network:
+  container_egress: none
+  literature_and_web: none
+container_resources:
+  vcpu: 8
+  memory_gib: 64
+timeouts_seconds:
+  single_tool_call: 600
+  container_startup: 900
+  task_setup: 3600
+  grading: 1800
+scratchpad_reasoning: allowed
+limits_and_ending: agent/limits.yaml (identical for every level)
+agent: agent/settings.yaml (identical for every level)
+submission: code/submit_findings_server.py (identical for every level)
+grading: grading/judge.yaml + grading/rubric.md (identical for every level)

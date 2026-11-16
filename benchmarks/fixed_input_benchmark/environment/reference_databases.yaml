@@ -1,0 +1,63 @@
+pfam:
+  mount_path: /opt/db/pfam
+  levels: 3 to 5
+  content: Pfam-A profile HMM library, pressed for HMMER (hmmpress)
+  source: https://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/Pfam-A.hmm.gz
+  retrieved: '2026-09-01'
+  identity:
+    file: Pfam-A.hmm
+    bytes: 2246909846
+    profile_count: 30134
+    sha256: 4b0da6399b97d2b23329de82190b2e5705bde1dea4cb2d028a52712d5966739e
+curated_protein_database:
+  mount_path: /opt/db/blastdb
+  levels: 3 to 5
+  content: UniProtKB/Swiss-Prot protein sequences as a BLAST protein database (makeblastdb -dbtype prot)
+  source: https://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz
+  retrieved: '2026-09-11'
+  filter: The entries describing one unrelated Escherichia coli protein had been removed from this copy (one accession and three header patterns). No removed entry is a reverse transcriptase or relates to these loci.
+  identity:
+    file: swissprot_scrubbed.fasta
+    bytes: 288201099
+    sequence_count: 575747
+    sha256: 93066c184c477ad499e28479e92bd18ebb024cfa1f29574b247d24aef2de15bd
+reference_structure_database:
+  mount_path: /opt/db/foldref
+  levels: 4 and 5
+  content: Foldseek's distributed PDB database (all PDB chains, clustered at 100% identity), obtained with 'foldseek databases PDB'
+  retrieved: '2026-09-16'
+  snapshot:
+    pdb_date: 2025-01-01 (PDB_DATE 250101)
+    pdb100_archive_md5: aefd75e0a5d6acbe8a2b7791b53eb479
+    foldseek_commit_of_the_distribution: 1815f0d76d7b5807e63b13f9d446dcef43c1f3b1
+  entry_count: 324204
+  principle: A generic reference set, not curated toward any expected answer. It was checked once, privately, that the graded partner fold is findable in it from the staged models.
+  files:
+    pdb:
+      bytes: 73509797
+      sha256: fdcd08940cdf515b3806d8fb118fafd447954b65568f2ac51e102a58a4873a19
+    pdb.index:
+      bytes: 6408827
+      sha256: 4cd9906f83f6967e93b2a94af6f0007a84aedda034f6e08488741e0db17dc30b
+    pdb.lookup:
+      bytes: 50332108
+      sha256: 91d62f5f28cfb5930de8f03b6a77b6d76b5e46a8249e64992b6afba41efc705a
+    pdb_ca:
+      bytes: 459762391
+      sha256: 84042d15219607ed76430d1bf8abc6db3be69f9b1c9dde4ce69f88aa4e506262
+    pdb_clu:
+      bytes: 11714518
+      sha256: 1690420ad0c3b6cbd4ce10e8827798aef5ff05bb3d78499b8ec5581f353e2b37
+    pdb_h:
+      bytes: 30678391
+      sha256: 74c7d9f96fbe1431836d8ed7a2690080e90f5196151e3bd340c43a05fc8671fb
+    pdb_mapping:
+      bytes: 20509232
+      sha256: 6ebfd8072e1210eb9e674335c0b604290bbfc681138611d84a7e11976fbe0a39
+    pdb_ss:
+      bytes: 73509797
+      sha256: 8e3df38ac21d6907f9de79681a2b9abefb37ca7fd5bae58ddc8e312892b68135
+    pdb_taxonomy:
+      bytes: 741255192
+      sha256: 8cf7b0c90902861d4a9dd23a67e663dc55d61e39be74326d4953ab116fbf6662
+delivery: Each database is a read-only file-system image mounted into the container; mounting is per level, so a level never sees a database of a higher level.

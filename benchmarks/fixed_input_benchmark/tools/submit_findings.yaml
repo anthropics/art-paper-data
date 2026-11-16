@@ -1,0 +1,38 @@
+tool: submit_findings
+name_seen_by_the_model: mcp__tools__submit_findings
+note: Only its input is scored. Available at every level.
+description_verbatim: Submit your findings. A valid resubmission replaces the previous one; malformed submissions are rejected and not recorded.
+input_schema:
+  type: object
+  properties:
+    findings:
+      anyOf:
+      - items:
+          properties:
+            claim:
+              description: One specific, committed statement (1-3 sentences)
+              type: string
+            evidence:
+              description: The observations/statistics from your analysis that support it
+              type: string
+            confidence:
+              description: Your probability (0-1) that the claim is correct
+              type: number
+          required:
+          - claim
+          - evidence
+          - confidence
+          type: object
+        type: array
+      - type: string
+      description: Your findings, most important first. A JSON list of objects, or that list as one JSON string.
+    report_markdown:
+      description: Full Markdown report with the evidence chain. 500-150000 characters.
+      type: string
+    follow_up:
+      description: The experiment(s) that would test your main prediction, and how impactful confirmation would be
+      type: string
+  required:
+  - findings
+  - report_markdown
+  - follow_up

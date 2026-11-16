@@ -1,0 +1,78 @@
+LOCUS       locus_088               2441 bp    DNA     linear   UNA 01-JAN-1980
+DEFINITION  uncharacterised locus locus_088.
+ACCESSION   locus_088
+VERSION     locus_088
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     source          1..2441
+                     /mol_type="genomic DNA"
+     CDS             594..2180
+                     /locus_tag="locus_088_orf001"
+                     /transl_table=11
+                     /product="reverse transcriptase"
+                     /translation="MNNIKKNIYDSNLKNNSETFYNSFNLRIIDGFKRVNIRNGVIFLS
+                     EYLPIILTSKGYLNLLSDNKLPRNIELCFPDKLDDPKVKESYLNYYKSYHIDDRGIEKT
+                     LNTFELFKKFHNQIITVDDVLYYKKVFNIDIFDLEAKDIIYNDIFKCSEKIKAIDFPNI
+                     YRKLDYPYIYRNLNLNEEIVYLTGYSKNNFKIYEIDFEDIEIDYILNMIENKLLTPFIE
+                     LYISYMSIPNNKEFYRTFYVPKKDGTRRKISEPIEEIKKPCKSILYFMNKAFNTKLGKR
+                     QSGQYAYIEKTGIRDNANVHRLSEKVIKFDISKFFDNCRFYDFKKYLEFYYKDCNASVK
+                     NELEDMFFDILIDKETRGLYMGNPLSGILSNMIIFKCAYYMKNLAELSDIKFSIYADDI
+                     TFSGSKDNKDLNVKNCKNIIKYAFDYYEIKFEVNDKKTRVLFNNGRRITGIRINHNNQL
+                     TPDRNKYMLMKSICDHLRNNKPITMDKNELQGKLSFYLYIDTSGKFKKLVNKYKKELND
+                     FGVIISSKYFD"
+                     /db_xref="Pfam:PF00078"
+                     /note="Pfam domains: RVT_1 (242-466, 3.3e-10)"
+                     /structure_id="pca1510a2"
+     CDS             2215..2439
+                     /locus_tag="locus_088_orf002"
+                     /transl_table=11
+                     /product="hypothetical protein"
+                     /translation="MNKNNIRLMNKEIDNYIDKIIERLKKYNFRYLPGEKSSEEMIRSK
+                     LSQNEIIDIFKEKIGILNIVENIDNFNTQL"
+                     /structure_id="pf705e0f7"
+ORIGIN
+        1 cctaagactt atatatttta gtaaaaataa ttaatatttt atcaaacatt aattagataa
+       61 ttagttttat ttaagtataa gtttcttata ttattttaaa attcttatta aaaaatggca
+      121 atcaacatct ggaacaaatt ttaattaaaa ttaaaataag ttccagatgt aaacgtcatt
+      181 ttatgtaatt atctaattaa ttttacatat aaatatcaac tagttttaaa taaatgaaag
+      241 attctttcat tataaaaaaa aatggtaatt aagaatacct tttatctttt aaggaatcag
+      301 ttgcttttta ttgaaataaa acaacgattc ctcaagatca aaagctttta gtagttgata
+      361 ttaaaaagaa tagaatatag attttattaa tagaagattc ttctataatt aaaaatatat
+      421 ttacaaatat aagatctgcc acataagctc aatgaataat tattaataat tatttccatt
+      481 gagcttctga gagctatctt tagagtatat tctattcttt ttttttattt attttttaaa
+      541 tatatatttt aaaaatggtc atcaaaaata aaaattaaaa aggagatatt attatgaata
+      601 atataaagaa aaatatatat gactcaaatt taaaaaataa ttcggagacg ttttataata
+      661 gctttaattt aagaattata gatggattta aaagagtaaa tattcgtaat ggtgtaatat
+      721 ttttaagtga atatttacct ataatattga catctaaagg ttatttaaac ttactgtcag
+      781 ataacaaact tcctagaaat atagaattat gttttcctga taaattagac gatccaaaag
+      841 taaaggaaag ttatttgaat tattataaaa gttatcatat tgatgataga ggtattgaaa
+      901 aaactttaaa tacctttgaa ttatttaaga aattccataa tcaaattatc actgtagatg
+      961 atgtactcta ctataaaaaa gtttttaata tagatatttt tgatttggaa gcaaaagata
+     1021 ttatttataa tgacattttt aaatgtagtg agaaaataaa agctattgat tttcctaata
+     1081 tttacaggaa attggattat ccttatatat atagaaattt aaacttaaat gaagaaattg
+     1141 tatatttaac aggatattca aaaaataatt ttaaaatata tgaaattgat tttgaagata
+     1201 ttgaaataga ttatatttta aatatgatag aaaataaact attaactcca tttatagaat
+     1261 tatatatatc ttatatgagt attccaaata ataaagagtt ctatagaact ttctatgttc
+     1321 ctaaaaaaga tggaactaga agaaagatat ctgaacctat tgaagaaatt aaaaaacctt
+     1381 gtaagagtat actttatttt atgaataaag cctttaatac taaattaggt aaaagacaaa
+     1441 gtggacaata tgcatatatt gaaaaaactg gtattagaga taatgctaat gttcatagat
+     1501 tatctgaaaa ggttataaaa tttgatatat cgaaattttt cgataattgc agattctatg
+     1561 attttaaaaa atatttagaa ttttattata aagattgtaa tgcatctgtt aaaaatgaat
+     1621 tagaagatat gttctttgat attcttatcg ataaagaaac tagaggttta tatatgggta
+     1681 atcctcttag tggtatatta agtaatatga ttatttttaa atgtgcttat tatatgaaaa
+     1741 atttagccga attatcagat attaaatttt caatatatgc agacgatata actttttcag
+     1801 gttcaaaaga taataaagat ttaaatgtga aaaattgtaa aaatataatc aaatatgcat
+     1861 ttgattatta tgaaataaag tttgaagtta atgataaaaa gacaagagta ttatttaata
+     1921 atggtagaag aataacaggt attcgtatta atcataataa tcagttaact ccagatagaa
+     1981 ataaatatat gcttatgaaa tctatttgtg accacttaag aaataataag cctataacta
+     2041 tggataaaaa tgaattacaa ggtaaattat cattctatct ttatatagat actagtggta
+     2101 aatttaaaaa acttgttaat aaatacaaaa aagaattaaa tgattttgga gttattattt
+     2161 ctagtaagta ttttgattaa atgatattga tacttaatat aaaggagaaa tattatgaat
+     2221 aaaaataata taagattgat gaataaagaa atagataatt atatagataa aataattgaa
+     2281 agattaaaaa aatataattt tagatatctt ccaggagaaa aatcatcaga agaaatgata
+     2341 cgatcaaaat tatctcaaaa tgaaataatt gatatattta aagagaaaat aggtatttta
+     2401 aatattgttg aaaatattga taattttaat actcaactat c
+//

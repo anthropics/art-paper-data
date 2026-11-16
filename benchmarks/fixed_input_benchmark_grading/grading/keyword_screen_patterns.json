@@ -1,0 +1,110 @@
+{
+ "_doc": "Per-claim programmatic rules applied to ONE short un-hedged finding.claim at a time. all: every pattern must match; any: at least one; none: must not match. Conservative by design \u2014 misses go to the judge.",
+ "c1": {
+  "all": [
+   "\\b(RT|reverse transcriptase)s?\\b"
+  ],
+  "any": [
+   "\\b(novel|new|unassigned|uncharacteri[sz]ed|unclassified|distinct|previously undescribed)\\b.{0,40}\\b(family|clade|lineage|class|group)\\b",
+   "\\b(family|clade|lineage)\\b.{0,60}\\bnot\\b.{0,40}\\b(retron|group II|DGR|Abi)"
+  ],
+  "none": [
+   "\\bare (retron|group II|DGR|Abi\\w*|telomerase)\\b",
+   "\\b(is|are) a (retron|DGR|group II)"
+  ]
+ },
+ "c2": {
+  "all": [
+   "N-termin"
+  ],
+  "any": [
+   "(extension|additional|extra|novel|uncharacteri[sz]ed|accessory).{0,30}(domain|region|module)",
+   "(domain|region|module).{0,30}(N-termin\\w+).{0,30}(RT|reverse transcriptase|core|palm|finger)"
+  ],
+  "none": []
+ },
+ "c3": {
+  "all": [
+   "(downstream|3'|3\u2032|immediately after|adjacent|neighbou?r|partner|operon)"
+  ],
+  "any": [
+   "(co-?orient|co-?direction|same strand|operon|translational\\w* coupl|overlap\\w* (stop|start|by ~?-?\\d)|-4 ?bp|conserved partner|invariabl|in (all|most|\\d\\d) (of the )?loci)"
+  ],
+  "none": []
+ },
+ "c3b": {
+  "all": [
+   "(partner|downstream|neighbou?r|second gene|accessory)"
+  ],
+  "any": [
+   "(two|three|2|3|multiple|distinct|different|alternative|mutually exclusive).{0,40}(famil|type|class|architecture|partner|version|flavou?r)",
+   "(subtype|sub-?type|type I|type II|type 1|type 2|clade-specific|lineage-specific).{0,80}(partner|downstream|protein|ORF)",
+   "(staph\\w*|jumbo).{0,80}(instead|replac|different|small|helical|alpha|~?2[5-9]\\d ?aa)"
+  ],
+  "none": []
+ },
+ "c4a": {
+  "all": [
+   "(GNAT|GCN5|N-?acetyltransferase|acyl-CoA N-acyltransferase|NAT superfamily)"
+  ],
+  "any": [
+   "(fold|like|superfamily|structur|domain|resembl|homolog|Foldseek|TM-?score|DALI)"
+  ],
+  "none": [
+   "\\bno\\b.{0,20}(GNAT|GCN5)",
+   "not .{0,20}(GNAT|GCN5)"
+  ]
+ },
+ "c4b": {
+  "all": [
+   "(tandem|two|duplicat|repeat\\w*|double|twin|2 ?x|pair of).{0,40}(GNAT|GCN5|acetyltransferase|NAT|cop(y|ies)|domains?|folds?|lobes?)"
+  ],
+  "any": [
+   ".*"
+  ],
+  "none": []
+ },
+ "c4c": {
+  "all": [
+   "(CoA|acetyl-?CoA|P-?loop|Q/R.?x.?x.?G.?x.?G|cofactor|GxG)"
+  ],
+  "any": [
+   "(absent|lack|missing|lost|degenerat|non-?canonical|no (recogni[sz]able|conserved|canonical)|remodel|closed|not conserved|unlikely to bind)"
+  ],
+  "none": []
+ },
+ "c5a": {
+  "all": [
+   "(upstream|5'|5\u2032|preceding|before the RT|leader)"
+  ],
+  "any": [
+   "(non-?coding|ncRNA|structured RNA|RNA element|intergenic|msr|msd|untranslated).{0,80}"
+  ],
+  "none": []
+ },
+ "c5b": {
+  "all": [
+   "(tandem|direct|head-to-tail).{0,20}repeat|repeat.{0,20}(array|tandem|cop(y|ies)|units?)"
+  ],
+  "any": [
+   "(\\d{2,3} ?(nt|bp|nucleotide)|\\d+(-| to )\\d+ cop|cop(y|ies)|units?|periodic)"
+  ],
+  "none": [
+   "inverted repeat",
+   "protein repeat",
+   "amino[- ]acid repeat"
+  ]
+ },
+ "c5c": {
+  "all": [
+   "(unit|cop(y|ies)|repeat)"
+  ],
+  "any": [
+   "\\d\\d ?%.{0,30}(identi|similar)",
+   "(diverg|variant|non-?identical|imperfect|degenerate).{0,40}(cop|unit|repeat)",
+   "(z-?score|MFE|minimum free energy|RNAfold|stem-?loop|hairpin|secondary structure).{0,60}(unit|cop|repeat|each)",
+   "(unit|cop|repeat|each).{0,60}(z-?score|MFE|RNAfold|stem-?loop|hairpin|fold)"
+  ],
+  "none": []
+ }
+}

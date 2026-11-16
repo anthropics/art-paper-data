@@ -1,0 +1,22 @@
+tool: bash
+name_seen_by_the_model: mcp__tools__bash
+note: Runs inside the task container as an unprivileged user (uid 1000). Shell state persists across calls. Available at levels 3 to 5.
+description_verbatim: |-
+  Run commands in a bash shell
+  * When invoking this tool, the contents of the "command" parameter does NOT need to be XML-escaped.
+  * You don't have access to the internet via this tool.
+  * Commands that take more than 600 seconds will time out and the tool will need to be restarted.
+  * Commands that produce a stdout + stderr with more than 16000 characters will be truncated.
+  * To inspect a particular line range of a file, e.g. lines 10-25, try 'sed -n 10,25p /path/to/the/file'.
+  * State is persistent across command calls and discussions with the user.
+  * Please run long lived commands in the background, e.g. 'sleep 10 &' or start a server in the background. A backgrounded command does not block this call's return, and anything it writes to stdout or stderr after the foreground part exits will not appear in this call's result.
+input_schema:
+  type: object
+  properties:
+    command:
+      type: string
+      description: The bash command to run. Required unless the tool is being restarted.
+    restart:
+      type: boolean
+      description: Specifying true will restart this tool. Otherwise, leave this unspecified.
+  required: []

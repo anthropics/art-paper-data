@@ -1,0 +1,97 @@
+base_image: Ubuntu 22.04
+model_user:
+  name: model
+  uid: 1000
+  home_of_work: /workdir
+program_availability: 'Programs are in two groups, ''sequence'' and ''structure''. A group''s directory is executable by the model only at levels that include it (sequence: levels 3 to 5; structure: levels 4 and 5); a PATH directory is repopulated with links to the groups of the level when a task is set up.'
+programs:
+  HMMER:
+    version: 3.3.2
+    source: Ubuntu 22.04 package
+    exposed:
+    - hmmscan
+    - hmmsearch
+    - phmmer
+    - jackhmmer
+  BLAST+:
+    version: 2.12.0
+    source: Ubuntu 22.04 package
+    exposed:
+    - blastp
+    - blastn
+    - blastx
+    - tblastn
+    - makeblastdb
+  MMseqs2:
+    version: 13-45111
+    source: Ubuntu 22.04 package
+    exposed:
+    - mmseqs
+  MAFFT:
+    version: '7.490'
+    source: Ubuntu 22.04 package
+    exposed:
+    - mafft
+  FastTree:
+    version: 2.1.11
+    source: Ubuntu 22.04 package
+    exposed:
+    - fasttree
+    - FastTree
+  Prodigal:
+    version: 2.6.3
+    source: Ubuntu 22.04 package
+    exposed:
+    - prodigal
+  ViennaRNA:
+    version: 2.4.17
+    source: Ubuntu 22.04 package
+    exposed:
+    - RNAfold
+    - RNAalifold
+    - RNAz
+    - RNAplot
+  EMBOSS:
+    version: 6.6.0
+    source: Ubuntu 22.04 package
+    exposed:
+    - needle
+    - water
+    - transeq
+    - sixpack
+    - pepstats
+    - garnier
+    note: only these six EMBOSS programs are exposed
+  Foldseek:
+    version: release 10-941cd33
+    source: github.com/steineggerlab/foldseek release asset foldseek-linux-avx2.tar.gz
+    sha256_of_release_asset: e6a3e3860e76b0b7b858736f627fe680d4d7f0fc7298301d8a92b9f711d74ac7
+    exposed:
+    - foldseek
+  US-align:
+    version: '20260826'
+    source: github.com/pylelab/USalign, commit 4ab35d64c84673cfff19b218c8c64350361fb875, compiled with g++ -O3
+    exposed:
+    - USalign
+    - TMalign
+  PyMOL:
+    version: 2.5 (Ubuntu 22.04 package, open-source build)
+    exposed:
+    - pymol
+    - pymol-headless
+python:
+  version: '3.11'
+  packages:
+    biopython: '1.88'
+    pyhmmer: 0.12.3
+    gemmi: 0.7.5
+    networkx: 3.6.1
+    freesasa: 2.2.1
+    numpy: 2.4.6
+    scipy: 1.17.1
+    pandas: 3.0.5
+    scikit-learn: 1.9.0
+    matplotlib: 3.11.1
+  note: Available at every level that has a shell. 'pyrodigal' is named in the prompt but was not installed; Prodigal itself is.
+versions_confirmed_from: version banners printed inside recorded attempts, and the pinned entries of the image recipe
+not_in_the_image: No reference database is included in the image; databases are mounted read-only per level (environment/reference_databases.yaml).

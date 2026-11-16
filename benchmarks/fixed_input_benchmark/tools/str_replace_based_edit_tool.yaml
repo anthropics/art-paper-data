@@ -1,0 +1,55 @@
+tool: str_replace_based_edit_tool
+name_seen_by_the_model: mcp__tools__str_replace_based_edit_tool
+note: File viewer/editor acting inside the task container. Available at levels 3 to 5.
+description_verbatim: |-
+  Tool for viewing, creating and editing files
+  * The `view` command supports the following cases:
+    - Directories: Lists files and directories up to 2 levels deep, ignoring hidden items and node_modules
+    - Image files (.jpg, .jpeg, or .png): Displays the image visually
+    - Text files: Displays numbered lines. Lines are determined from Python's `.splitlines()` method, which recognizes all standard line breaks. If the file contains more than 75000 characters, the output will be truncated.
+    - Files with non-UTF-8 encoding display invalid bytes as hex escapes (e.g. `\xb5`). Binary files (containing NUL bytes) cannot be viewed
+  * The `create` command creates or overwrites text files with the content specified in the `file_text` parameter.
+  * The `str_replace` command replaces text in a file. Requires an exact, unique match of `old_str` (whitespace sensitive).
+    - Will fail if `old_str` doesn't exist or appears multiple times
+    - Omitting `new_str` deletes the matched text
+    - Invalid bytes are shown as `\xNN` hex escapes in `view` output but are stored differently in the file, so an `old_str` containing them (or characters rendered from them) will not match. Target only clean text, or edit such lines via bash
+  * The `insert` command inserts the text `insert_text` at the line `insert_line`.
+    - Inserted text will silently be rewritten to the file's dominant line-ending style (CRLF/CR files stay consistent). For byte-exact writes, use the `create` command or bash
+  * You are not allowed to run the `create`, `str_replace` or `insert` commands on the following paths: ['/dev/', '/proc/', '/sys/']
+input_schema:
+  type: object
+  properties:
+    command:
+      type: string
+      enum:
+      - view
+      - create
+      - str_replace
+      - insert
+      description: 'The operation to perform. Choose from: `view`, `create`, `str_replace`, or `insert`. See usage notes for details.'
+    path:
+      type: string
+      description: Required parameter for all commands. Absolute path to file or directory, e.g. `/repo/file.py` or `/repo`.
+    view_range:
+      type: array
+      items:
+        type: integer
+      description: 'Optional parameter for the `view` command (text files only). Format: [start_line, end_line] where lines are indexed starting at 1. Use [start_line, -1] to view from start_line to the end of the file.'
+    file_text:
+      type: string
+      description: Required for `create` command. Contains the complete text content to write to the file.
+    old_str:
+      type: string
+      description: Required parameter of `str_replace` command, with string to be replaced. Must be an EXACT and UNIQUE match in the file (be mindful of whitespaces). Tool will fail if multiple matches or no matches are found.
+    new_str:
+      type: string
+      description: Optional for `str_replace` command. The text that will replace `old_str`. If omitted, `old_str` will be deleted without replacement.
+    insert_text:
+      type: string
+      description: Required parameter of `insert` command, containing the text to insert. Must end with a newline character for the new text to appear on a separate line from any existing text that follows the insertion point.
+    insert_line:
+      type: integer
+      description: 'Required parameter of `insert` command with line position for insertion: 0 places text at the beginning of the file, N places text after line N, and using the total number of lines in the file places text at the end. Lines in a file are determined using Python''s `.splitlines()` method, which recognizes all standard line breaks.'
+  required:
+  - command
+  - path

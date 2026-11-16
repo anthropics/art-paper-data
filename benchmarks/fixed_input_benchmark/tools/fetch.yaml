@@ -1,0 +1,21 @@
+tool: fetch
+name_seen_by_the_model: mcp__tools__fetch
+note: Pages from a cached index, not the live internet; long documents are returned in pages (the 'page' argument). Available at level 5.
+description_verbatim: |-
+  This tool fetches web pages from a cached index — it does not access the live internet. Coverage is broad but not complete: a page may be missing from the index or older than the live version, in which case the tool returns no result. URLs that appear in web_search results are the most likely to be available. Search-engine results pages, video sites, social media, and login- or paywalled pages are generally not fetchable (e.g., google.com) — don't retry them or look for proxies; use web_search for discovery instead.
+  - This tool fetches the document identified by the source argument in the cached document index (no live web access). It is often included in search results between <source> or <url> tags.
+  - You'll get the fetched document in <fetch_result> tags.
+  - You'll also get a list of links from the document in <links> tags. You can use these links to fetch more related documents.
+  - Feel free to call the fetch tool multiple times if you need to fetch multiple documents.
+input_schema:
+  type: object
+  properties:
+    source:
+      type: string
+      description: A string that identifies the source of the document to fetch
+    page:
+      type: integer
+      minimum: 1
+      description: Use this to fetch additional pages of document from source
+  required:
+  - source

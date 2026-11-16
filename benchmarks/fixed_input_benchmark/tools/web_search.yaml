@@ -1,0 +1,21 @@
+tool: web_search
+name_seen_by_the_model: mcp__tools__web_search
+note: Web search served outside the container. Available at level 5.
+description_verbatim: |-
+  Search Engine Tool
+  * The search engine will search over the entire internet.
+  * Note: Common search operators such as "", AND, OR, NOT, site: are not supported and will be ignored.
+  * You'll get results back from the search engine in <search_results> tags.
+input_schema:
+  type: object
+  properties:
+    query:
+      type: string
+      description: Search query
+    page:
+      type: integer
+      minimum: 1
+      maximum: 10
+      description: Use this to fetch additional pages of search results
+  required:
+  - query
